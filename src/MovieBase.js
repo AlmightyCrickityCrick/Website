@@ -1,11 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { API_Key } from "./ConstantsJS";
+
 class MovieBase extends React.Component {
   constructor() {
     super();
     this.state = {
-      movieList: {},
+      movieList: [],
     };
   }
   componentDidMount() {
