@@ -1,7 +1,5 @@
 .collection {
   color: white;
-  height: 90%;
-  width: 95%;
 }
 .collection-title {
   font-family: "Livvic", sans-serif;
@@ -13,9 +11,8 @@
 .collection-new-card {
   height: 50%;
   width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 .collection-popular-card {
   height: 50%;

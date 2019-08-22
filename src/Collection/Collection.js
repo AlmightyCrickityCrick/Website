@@ -33,20 +33,15 @@ class Collection extends React.Component {
       <div className="collection">
         <h1 className="collection-title">New</h1>
         <div className="collection-new-card">
-          {this.state.movies.map(movies => {
+          {this.state.movies.map(movie => {
             return (
               <Card
-                title="Hello"
-                description="salut"
-                genres={["Comedy", "rama"]}
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfTdTHiIYc-Gti-IKQEwmC_bqa654NOpwdl4EP9oBHal594tdF"></Card>
+                title={movie.title}
+                description={movie.description}
+                genres={movie.genres}
+                src={movie.src}></Card>
             );
           })}
-          <Card
-            title="Hello"
-            description="salut"
-            genres={["Comedy", "rama"]}
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfTdTHiIYc-Gti-IKQEwmC_bqa654NOpwdl4EP9oBHal594tdF"></Card>
         </div>
         <h1 className="collection-title">Popular</h1>
         <div className="collection-popular-card"></div>
