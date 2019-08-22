@@ -1,4 +1,19 @@
 .header {
-  background-color: #555;
-  height: 50px;
+  background-color: rgb(20, 20, 20);
+}
+.header-menu {
+  color: #555;
+  font-size: 4.5vh;
+  position: absolute;
+  top: 5%;
+  left: 75%;
+  font-family: "Livvic", sans-serif;
+}
+.item-list {
+  margin-right: 40px;
+  display: inline;
+}
+
+.item-list:hover {
+  color: #a1c349;
 }

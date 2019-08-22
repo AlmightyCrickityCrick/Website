@@ -8,8 +8,6 @@ function Home() {
     (
       <div>
         <Collection> </Collection>
-        <Collection></Collection>
-        <Collection></Collection>
       </div>
     )
   );
