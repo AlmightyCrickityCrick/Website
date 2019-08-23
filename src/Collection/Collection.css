@@ -1,22 +1,44 @@
 .collection {
-  color: white;
+  color: rgb(90, 90, 90);
+}
+.collection-direction {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.collection-button {
+  padding: 3px;
+  justify-self: flex-end;
+  color: #a1c349;
+  font-size: 2em;
+  border: 2px ridge #64792fb7;
+  margin: 20px 0px 7px 0px !important;
+  /* margin-top: 20px;
+    margin-bottom: 7px; */
+  border-radius: 5%;
+}
+.collection-button a {
+  margin: 0px;
+  color: #a1c349;
+  font-size: 2em;
+}
+.collection-button:hover {
+  background-color: #a0c34938;
 }
 .collection-title {
+  color: rgb(99, 96, 96);
+  justify-self: flex-start;
   font-family: "Livvic", sans-serif;
   font-size: 3em;
-  left: 25%;
   padding-top: 10px;
-  margin-left: 10%;
 }
 .collection-new-card {
-  height: 50%;
-  width: 100%;
   display: grid;
+  grid-gap: 20px;
   grid-template-columns: 1fr 1fr;
 }
 .collection-popular-card {
-  height: 50%;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 1fr;
 }

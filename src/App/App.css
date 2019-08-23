@@ -1,25 +1,37 @@
 @import url("https://fonts.googleapis.com/css?family=Livvic|Montserrat&display=swap");
-
+body {
+  min-width: 1050px;
+}
 .app {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
   background-color: rgb(10, 10, 10);
+  background: url(http://www.buttonsny.com/wp-content/uploads/2018/03/Really_dark_grey_background.png)
+    no-repeat fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  /* background-image: linear-gradient(rgb(90, 90, 90) rgb(10, 10, 10)); */
   margin: 0;
   padding: 0;
 }
 
 .app-content {
+  /* background-image: url(../Images⁩/simple-black-background.svg); */
+
   flex: 1 1 auto;
+  width: 1400px;
+  margin: 0 auto;
 }
 
 .app a {
   text-decoration: none;
-  color: #fff;
+
   font-size: 25px;
   margin: auto;
 }
 
 .app a:hover {
-  text-decoration: underline;
+  text-decoration: none;
+  color: #a1c349;
 }
