@@ -45,10 +45,9 @@ class Movie extends React.Component {
     )
       .then(trailer => trailer.json())
       .then(trailer => {
-        console.log("222", trailer);
         this.setState({
           trailer: {
-            src: trailer.results[0].key,
+            src: trailer.results[0] && trailer.results[0].key,
           },
         });
       });
@@ -102,17 +101,18 @@ class Movie extends React.Component {
             />
           </div>
         </div>
-
-        <div className="actor-section">
-          <div>Main Cast</div>
-          {this.state.cast.map(actor => {
-            return (
-              <Cast
-                role={actor.role}
-                name={actor.name}
-                image={actor.photo}></Cast>
-            );
-          })}
+        <div className="actor-container">
+          <div className="actor-title">Main Cast</div>
+          <div className="actor-section">
+            {this.state.cast.map(actor => {
+              return (
+                <Cast
+                  role={actor.role}
+                  name={actor.name}
+                  image={actor.photo}></Cast>
+              );
+            })}
+          </div>
         </div>
       </div>
     );

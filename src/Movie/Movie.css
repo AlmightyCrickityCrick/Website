@@ -50,12 +50,25 @@
   width: auto;
   border: 2px solid rgb(247, 241, 241);
 }
-.actor-section {
+.actor-container {
   margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  background: rgb(30, 30, 30);
+}
+.actor-title {
+  font-family: "Livvic", sans-serif;
+  font-size: 40px;
+  padding-bottom: 10px;
+  text-align: center;
+  color: #a1c349;
+}
+.actor-section {
+  height: auto;
   height: auto;
   width: auto;
-  background: rgb(100, 100, 100);
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  margin: auto;
 }
