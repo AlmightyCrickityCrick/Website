@@ -1,0 +1,61 @@
+.trailer-container {
+  margin-top: 10px;
+  height: 800px;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(90, 90, 90);
+}
+.trailer-text {
+  color: #a1c349;
+  text-emphasis: bold;
+  padding: 5px;
+  font-size: 3em;
+  font-family: "Livvic", sans-serif;
+}
+.individual-card {
+  margin-top: 10px;
+  height: 800px;
+  width: auto;
+  background-color: rgb(50, 50, 50);
+  display: flex;
+  justify-content: space-between;
+}
+.movie-text {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.genre-object {
+  color: grey;
+}
+.title {
+  padding: 5px;
+  font-family: "Livvic", sans-serif;
+  font-size: 3em;
+}
+.movie-description {
+  height: 800px;
+  font-family: "Livvic", sans-serif;
+}
+.card-poster {
+  height: 1200px;
+  width: auto;
+}
+.poster {
+  margin: 15px;
+  height: 600px;
+  width: auto;
+  border: 2px solid rgb(247, 241, 241);
+}
+.actor-section {
+  margin-top: 10px;
+  height: auto;
+  width: auto;
+  background: rgb(100, 100, 100);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}

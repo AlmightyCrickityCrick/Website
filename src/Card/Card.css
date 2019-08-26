@@ -40,10 +40,7 @@
   display: flex;
   justify-content: center;
 }
-/* .genre-list {
-  display: flex;
-  justify-content: space-between */
-/* } */
+
 .genre {
   color: lightslategray;
   display: inline;

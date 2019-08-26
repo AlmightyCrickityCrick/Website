@@ -1,31 +1,71 @@
 import React from "react";
 import { match } from "minimatch";
 import { API_Key } from "../ConstantsJS";
+import "./Movie.css";
+import Cast from "../Cast/Cast";
+import Trailer from "../Trailer/Trailer";
 
 class Movie extends React.Component {
   state = {
-    movies: [],
+    movie: {},
+    trailer: {},
+    cast: [],
   };
   componentDidMount() {
-    fetch(
-      "https://api.themoviedb.org/3/discover/movie?api_key=" +
-        API_Key +
-        "&language=en-US&sort_by=" +
-        this.props.sortType +
-        "&include_adult=false&include_video=false&page=1"
-    )
-      .then(response => response.json())
-      .then(response =>
-        this.setState({
-          movies: response.results.map(movies => {
-            return {
-              title: movies.original_title,
-              description: movies.overview,
+    if (this.props.match.params.id) {
+      fetch(
+        "https://api.themoviedb.org/3/movie/" +
+          this.props.match.params.id +
+          "?api_key=" +
+          API_Key +
+          "&language=en-US"
+      )
+        .then(movie => movie.json())
+        .then(movie => {
+          this.setState({
+            movie: {
+              title: movie.original_title,
+              description: movie.overview,
               src:
-                movies.poster_path &&
-                "https://image.tmdb.org/t/p/w500" + movies.poster_path,
-              genres: movies.genre_ids,
-              id: movies.id,
+                movie.poster_path &&
+                "https://image.tmdb.org/t/p/w500" + movie.poster_path,
+              genres: movie.genres,
+              id: movie.id,
+            },
+          });
+        })
+        .then(console.log(this.state.movie.genres));
+    }
+    fetch(
+      "https://api.themoviedb.org/3/movie/" +
+        this.props.match.params.id +
+        "/videos?api_key=" +
+        API_Key +
+        "&language=en-US"
+    )
+      .then(trailer => trailer.json())
+      .then(trailer => {
+        console.log("222", trailer);
+        this.setState({
+          trailer: {
+            src: trailer.results[0].key,
+          },
+        });
+      });
+    fetch(
+      "https://api.themoviedb.org/3/movie/" +
+        this.props.match.params.id +
+        "/credits?api_key=" +
+        API_Key
+    )
+      .then(cast => cast.json())
+      .then(cast =>
+        this.setState({
+          cast: cast.cast.map(actor => {
+            return {
+              role: actor.character,
+              name: actor.name,
+              photo: actor.profile_path,
             };
           }),
         })
@@ -33,7 +73,49 @@ class Movie extends React.Component {
   }
 
   render() {
-    return <div></div>;
+    return (
+      <div>
+        <Trailer id={this.state.trailer.src}> </Trailer>
+        <div className="individual-card">
+          <div className="movie-text">
+            <div className="genre">
+              <ul className="genre-list">
+                {/* <span>
+                  {this.state.movie.genres.map(genre => (
+                    <li className="genre-object" key={genre.id}>
+                      {genre.name}
+                    </li>
+                  ))}
+                </span> */}
+              </ul>
+            </div>
+            <h1 className="title">{this.state.movie.title}</h1>
+            <div className="movie-description">
+              {this.state.movie.description}
+            </div>
+          </div>
+          <div className="card-poster">
+            <img
+              className="poster"
+              src={this.state.movie.src}
+              alt="No poster yet"
+            />
+          </div>
+        </div>
+
+        <div className="actor-section">
+          <div>Main Cast</div>
+          {this.state.cast.map(actor => {
+            return (
+              <Cast
+                role={actor.role}
+                name={actor.name}
+                image={actor.photo}></Cast>
+            );
+          })}
+        </div>
+      </div>
+    );
   }
 }
 export default Movie;
