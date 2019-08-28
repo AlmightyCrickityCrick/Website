@@ -10,29 +10,38 @@ class Collection extends React.Component {
     movies: [],
   };
   componentDidMount() {
-    fetch(
-      "https://api.themoviedb.org/3/discover/movie?api_key=" +
-        API_Key +
-        "&language=en-US&sort_by=" +
-        this.props.sortType +
-        "&include_adult=false&include_video=false&page=1"
-    )
-      .then(response => response.json())
-      .then(response =>
-        this.setState({
-          movies: response.results.map(movies => {
-            return {
-              title: movies.original_title,
-              description: movies.overview,
-              src:
-                movies.poster_path &&
-                "https://image.tmdb.org/t/p/w500" + movies.poster_path,
-              genres: movies.genre_ids,
-              id: movies.id,
-            };
-          }),
-        })
-      );
+    Promise.all([
+      fetch(
+        "https://api.themoviedb.org/3/discover/movie?api_key=" +
+          API_Key +
+          "&language=en-US&sort_by=" +
+          this.props.sortType +
+          "&include_adult=false&include_video=false&page=1"
+      ).then(response => response.json()),
+      fetch(
+        "https://api.themoviedb.org/3/genre/movie/list?api_key=" +
+          API_Key +
+          "&language=en-US"
+      ).then(response => response.json()),
+    ]).then(response => {
+      const movieList = response[0].results;
+      const genreList = response[1].genres;
+      const newMovie = movieList.map(movies => ({
+        title: movies.original_title,
+        description: movies.overview,
+        src:
+          movies.poster_path &&
+          "https://image.tmdb.org/t/p/w500" + movies.poster_path,
+        genres_id: movies.genre_ids,
+        genres_name: movies.genre_ids.map(
+          genreID => genreList.find(id => id.id === genreID).name
+        ),
+        id: movies.id,
+      }));
+      this.setState({
+        movies: newMovie,
+      });
+    });
   }
   render(props) {
     return (
@@ -49,7 +58,7 @@ class Collection extends React.Component {
               <Card
                 title={movie.title}
                 description={movie.description}
-                genres={movie.genres}
+                genres={movie.genres_name}
                 src={movie.src}
                 link={"/movie/" + movie.id}></Card>
             );

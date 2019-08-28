@@ -7,9 +7,10 @@ import Trailer from "../Trailer/Trailer";
 
 class Movie extends React.Component {
   state = {
-    movie: {},
+    movie: { title: "", desciption: "", src: "", genres: [] },
     trailer: {},
     cast: [],
+    showComponent: false,
   };
   componentDidMount() {
     if (this.props.match.params.id) {
@@ -70,6 +71,9 @@ class Movie extends React.Component {
         })
       );
   }
+  handleClick() {
+    this.setState({ showComponent: !this.state.showComponent });
+  }
 
   render() {
     return (
@@ -77,15 +81,15 @@ class Movie extends React.Component {
         <Trailer id={this.state.trailer.src}> </Trailer>
         <div className="individual-card">
           <div className="movie-text">
-            <div className="genre">
+            <div className="genre-space">
               <ul className="genre-list">
-                {/* <span>
+                <span>
                   {this.state.movie.genres.map(genre => (
                     <li className="genre-object" key={genre.id}>
                       {genre.name}
                     </li>
                   ))}
-                </span> */}
+                </span>
               </ul>
             </div>
             <h1 className="title">{this.state.movie.title}</h1>
@@ -102,17 +106,21 @@ class Movie extends React.Component {
           </div>
         </div>
         <div className="actor-container">
-          <div className="actor-title">Main Cast</div>
-          <div className="actor-section">
-            {this.state.cast.map(actor => {
-              return (
-                <Cast
-                  role={actor.role}
-                  name={actor.name}
-                  image={actor.photo}></Cast>
-              );
-            })}
-          </div>
+          <button className="actor-title" onClick={this.handleClick.bind(this)}>
+            Main Cast
+          </button>
+          {this.state.showComponent && (
+            <div className="actor-section">
+              {this.state.cast.map(actor => {
+                return (
+                  <Cast
+                    role={actor.role}
+                    name={actor.name}
+                    image={actor.photo}></Cast>
+                );
+              })}
+            </div>
+          )}
         </div>
       </div>
     );

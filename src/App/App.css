@@ -7,18 +7,15 @@ body {
   min-height: 100vh;
   flex-direction: column;
   background-color: rgb(10, 10, 10);
-  background: url(https://serfob.s3.amazonaws.com/media/dark-light-diamond-black-background341-ea58-4f38-872a-46973a25c8ba.png)
-    no-repeat fixed;
+  background: url(../Images/black.png) no-repeat fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
-  /* background-image: linear-gradient(rgb(90, 90, 90) rgb(10, 10, 10)); */
+
   margin: 0;
   padding: 0;
 }
 
 .app-content {
-  /* background-image: url(../Images⁩/simple-black-background.svg); */
-
   flex: 1 1 auto;
   width: 1400px;
   margin: 0 auto;

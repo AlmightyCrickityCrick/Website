@@ -47,8 +47,8 @@
   text-align: center;
 }
 .genre::after {
-  content: "|";
-  padding-left: 20px;
+  content: "| ";
+  padding-left: 5px;
 }
 .genre:last-child::after {
   content: " ";

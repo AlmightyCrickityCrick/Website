@@ -7,6 +7,7 @@ import "./App.css";
 import { API_Key } from "../ConstantsJS";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
+import Search from "../Search/Search";
 
 import Home from "../Home/Home";
 import About from "../About/About";
@@ -27,6 +28,7 @@ function App() {
           <Route path="/about" exact component={About}></Route>
           <Route path="/new" exact component={NewPage}></Route>
           <Route path="/popular" exact component={PopularPage}></Route>
+          <Route path="/search" exact component={Search}></Route>
           <Route path="/movie/:id" exact component={Movie}></Route>
         </div>
         <Footer></Footer>
