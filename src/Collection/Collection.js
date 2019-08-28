@@ -9,12 +9,15 @@ class Collection extends React.Component {
   state = {
     movies: [],
   };
+
   componentDidMount() {
     Promise.all([
       fetch(
         "https://api.themoviedb.org/3/discover/movie?api_key=" +
           API_Key +
-          "&language=en-US&sort_by=" +
+          "&language=en-US" +
+          this.props.queryUrl +
+          "&sort_by=" +
           this.props.sortType +
           "&include_adult=false&include_video=false&page=1"
       ).then(response => response.json()),
