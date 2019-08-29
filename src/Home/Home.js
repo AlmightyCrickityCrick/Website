@@ -12,28 +12,28 @@ function Home() {
           sortType="popularity.desc"
           cardCount={4}
           collectionName="Popular"
-          itemLink="/popular">
+          itemLink="/popular/1">
           {" "}
         </Collection>
         <Collection
           sortType="release_date.desc"
-          cardCount={4}
+          cardCount={9}
           collectionName="New"
-          itemLink="/new">
+          itemLink="/new/1">
           {" "}
         </Collection>
         <Collection
           sortType="vote_average.desc"
-          cardCount={4}
+          cardCount={5}
           collectionName="Most Liked"
-          itemLink="/votedesc">
+          itemLink="/best_rated/1">
           {" "}
         </Collection>
         <Collection
           sortType="vote_average.asc"
           cardCount={4}
           collectionName="Most hated"
-          itemLink="/voteasc">
+          itemLink="/worst_rated/1">
           {" "}
         </Collection>
       </div>

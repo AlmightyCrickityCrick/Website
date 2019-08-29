@@ -9,17 +9,16 @@ class Collection extends React.Component {
   state = {
     movies: [],
   };
-
-  componentDidMount() {
+  fetchMovies() {
     Promise.all([
       fetch(
         "https://api.themoviedb.org/3/discover/movie?api_key=" +
           API_Key +
           "&language=en-US" +
-          this.props.queryUrl +
           "&sort_by=" +
           this.props.sortType +
-          "&include_adult=false&include_video=false&page=1"
+          "&include_adult=false&include_video=false&page=" +
+          this.props.page
       ).then(response => response.json()),
       fetch(
         "https://api.themoviedb.org/3/genre/movie/list?api_key=" +
@@ -46,7 +45,13 @@ class Collection extends React.Component {
       });
     });
   }
-  render(props) {
+  componentDidMount() {
+    this.fetchMovies();
+  }
+  componentDidUpdate(prevProps) {
+    prevProps.page !== this.props.page && this.fetchMovies();
+  }
+  render() {
     return (
       <div className="collection">
         <div className="collection-direction">
@@ -58,12 +63,14 @@ class Collection extends React.Component {
         <div className="collection-new-card">
           {this.state.movies.slice(0, this.props.cardCount).map(movie => {
             return (
-              <Card
-                title={movie.title}
-                description={movie.description}
-                genres={movie.genres_name}
-                src={movie.src}
-                link={"/movie/" + movie.id}></Card>
+              movie.src && (
+                <Card
+                  title={movie.title}
+                  description={movie.description}
+                  genres={movie.genres_name}
+                  src={movie.src}
+                  link={"/movie/" + movie.id}></Card>
+              )
             );
           })}
         </div>

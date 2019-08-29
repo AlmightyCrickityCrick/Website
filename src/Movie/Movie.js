@@ -11,6 +11,7 @@ class Movie extends React.Component {
     trailer: {},
     cast: [],
     showComponent: false,
+    size: { description: 32, title: 48 },
   };
   componentDidMount() {
     if (this.props.match.params.id) {
@@ -34,8 +35,7 @@ class Movie extends React.Component {
               id: movie.id,
             },
           });
-        })
-        .then(console.log(this.state.movie.genres));
+        });
     }
     fetch(
       "https://api.themoviedb.org/3/movie/" +
@@ -74,6 +74,24 @@ class Movie extends React.Component {
   handleClick() {
     this.setState({ showComponent: !this.state.showComponent });
   }
+  Maximize() {
+    this.state.size.title < 70 &&
+      this.setState({
+        size: {
+          description: this.state.size.description + 2,
+          title: this.state.size.title + 2,
+        },
+      });
+  }
+  Minimize() {
+    this.state.size.title > 12 &&
+      this.setState({
+        size: {
+          description: this.state.size.description - 2,
+          title: this.state.size.title - 2,
+        },
+      });
+  }
 
   render() {
     return (
@@ -92,9 +110,21 @@ class Movie extends React.Component {
                 </span>
               </ul>
             </div>
-            <h1 className="title">{this.state.movie.title}</h1>
-            <div className="movie-description">
+            <h1 className="title" style={{ fontSize: this.state.size.title }}>
+              {this.state.movie.title}
+            </h1>
+            <div
+              className="movie-description"
+              style={{ fontSize: this.state.size.description }}>
               {this.state.movie.description}
+            </div>
+            <div className="button-holder">
+              <button className="min" onClick={this.Minimize.bind(this)}>
+                a
+              </button>
+              <button className="max" onClick={this.Maximize.bind(this)}>
+                A
+              </button>
             </div>
           </div>
           <div className="card-poster">

@@ -1,9 +1,8 @@
 import React from "react";
 import Collection from "../Collection/Collection";
 import { Link } from "react-router-dom";
-import "./NewPage.css";
 
-class NewPage extends React.Component {
+class WorstPage extends React.Component {
   state = {
     page: this.props.match.params.id,
   };
@@ -14,14 +13,15 @@ class NewPage extends React.Component {
   nextPage() {
     this.setState({ page: parseInt(this.props.match.params.id) + 1 });
   }
+
   render() {
     return (
       <div>
         <div>
           <Collection
             page={this.state.page}
-            sortType="release_date.desc"
-            collectionName="New"
+            sortType="vote_average.asc"
+            collectionName="Most Hated"
             itemLink="/"></Collection>
         </div>
         <div className="link-container">
@@ -30,7 +30,7 @@ class NewPage extends React.Component {
               <Link
                 className="previous"
                 onMouseDown={this.previousPage.bind(this)}
-                to={"/new/" + this.state.page}>
+                to={"/worst_rated/" + this.state.page}>
                 Previous
               </Link>
             </div>
@@ -38,7 +38,7 @@ class NewPage extends React.Component {
               <Link
                 className="next"
                 onMouseDown={this.nextPage.bind(this)}
-                to={"/new/" + this.state.page}>
+                to={"/worst_rated/" + this.state.page}>
                 Next
               </Link>
             </div>
@@ -48,4 +48,5 @@ class NewPage extends React.Component {
     );
   }
 }
-export default NewPage;
+
+export default WorstPage;
