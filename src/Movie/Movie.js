@@ -4,6 +4,7 @@ import { API_Key } from "../ConstantsJS";
 import "./Movie.css";
 import Cast from "../Cast/Cast";
 import Trailer from "../Trailer/Trailer";
+import { SSL_OP_TLS_ROLLBACK_BUG } from "constants";
 
 class Movie extends React.Component {
   state = {
@@ -12,7 +13,15 @@ class Movie extends React.Component {
     cast: [],
     showComponent: false,
     size: { description: 32, title: 48 },
+    className: "",
   };
+  checkClass() {
+    this.state.movie.popularity < 50
+      ? this.setState({ className: "popularity-rating-red" })
+      : this.state.movie.popularity > 70
+      ? this.setState({ className: "popularity-rating-red" })
+      : this.setState({ className: "popularity-rating-orange" });
+  }
   componentDidMount() {
     if (this.props.match.params.id) {
       fetch(
@@ -33,6 +42,7 @@ class Movie extends React.Component {
                 "https://image.tmdb.org/t/p/w500" + movie.poster_path,
               genres: movie.genres,
               id: movie.id,
+              popularity: parseInt(movie.popularity),
             },
           });
         });
@@ -59,16 +69,20 @@ class Movie extends React.Component {
         API_Key
     )
       .then(cast => cast.json())
-      .then(cast =>
-        this.setState({
-          cast: cast.cast.map(actor => {
-            return {
-              role: actor.character,
-              name: actor.name,
-              photo: actor.profile_path,
-            };
+      .then(
+        cast =>
+          this.setState({
+            cast: cast.cast.map(actor => {
+              return {
+                role: actor.character,
+                name: actor.name,
+                photo: actor.profile_path
+                  ? "https://image.tmdb.org/t/p/w500/" + actor.profile_path
+                  : "https://upload.wikimedia.org/wikipedia/commons/f/fc/No_picture_available.png",
+              };
+            }),
           }),
-        })
+        this.checkClass()
       );
   }
   handleClick() {
@@ -127,12 +141,26 @@ class Movie extends React.Component {
               </button>
             </div>
           </div>
-          <div className="card-poster">
-            <img
-              className="poster"
-              src={this.state.movie.src}
-              alt="No poster yet"
-            />
+          <div>
+            <div className="popularity-place">
+              <div className="popularity-title">Rating</div>
+              <div className="popularity-content">
+                <div className="black-line"></div>
+                <div className="black-line"></div>
+                <div className={this.state.className}>
+                  {this.state.movie.popularity}
+                </div>
+                <div className="black-line"></div>
+                <div className="black-line"></div>
+              </div>
+            </div>
+            <div className="card-poster">
+              <img
+                className="poster"
+                src={this.state.movie.src}
+                alt="No poster yet"
+              />
+            </div>
           </div>
         </div>
         <div className="actor-container">
