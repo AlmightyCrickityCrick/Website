@@ -1,0 +1,62 @@
+.movie-page {
+  width: 100%;
+  padding: 0 50px;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+.movie-image {
+  width: 300px;
+  height: 500px;
+  padding-right: 10px;
+}
+.movie-page-info {
+  display: flex;
+  flex-direction: column;
+  width: 1000px;
+}
+.movie-page-details {
+  color: white;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  padding: 0 0 0 10px;
+}
+.movie-page-title {
+  font-size: 45px;
+  padding-bottom: 15px;
+}
+.movie-genre {
+  display: flex;
+  font-size: 20px;
+  padding-bottom: 15px;
+}
+.movie-genre-name {
+  position: relative;
+}
+.movie-genre-name::after {
+  content: "|";
+  padding: 0 10px;
+}
+.movie-genre-name:last-child::after {
+  content: "";
+}
+.movie-description {
+  max-height: 127.5px;
+  font-size: 17px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+}
+.trailer-title {
+  color: white;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 30px;
+  padding: 10px 0;
+  text-align: center;
+}
+.cast-movie {
+  width: 1000px;
+}

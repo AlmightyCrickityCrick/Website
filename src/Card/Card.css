@@ -1,5 +1,64 @@
-.card {
-  padding: 10px;
-  background-color: black;
+.image {
+  width: 200px;
+}
+.placeholder-wrapper img {
+  width: 200px;
+  height: 300px;
+}
+.card-item {
+  background: #555;
   margin: 5px;
+  display: flex;
+  min-width: 0;
+}
+.movie-details {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  color: white;
+  padding: 10px;
+}
+.movie-title {
+  font-size: 35px;
+  padding: 5px 0;
+}
+.movie-description {
+  max-height: 127.5px;
+  font-size: 17px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+}
+.genre {
+  display: flex;
+  font-size: 15px;
+  padding: 10px 0;
+}
+.genre-name {
+  position: relative;
+}
+.genre-name::after {
+  content: "|";
+  padding: 0 10px;
+}
+.genre-name:last-child::after {
+  content: "";
+}
+.button {
+  cursor: pointer;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 15px;
+  background-color: darkorange;
+  border-radius: 20px;
+  color: black;
+  width: 75%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  padding: 8px;
 }

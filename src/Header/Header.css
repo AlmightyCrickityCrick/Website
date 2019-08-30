@@ -1,18 +1,18 @@
 .header {
   background-color: #555;
-  font-family: "Times New Roman", Times, serif;
-  height: 50px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  height: 90px;
   padding: 10px 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 10px;
 }
-
 .header-logo {
   color: white;
   width: 100px;
 }
-
 .logo-image {
   width: 90px;
 }
@@ -20,8 +20,15 @@
   display: flex;
   justify-content: space-between;
   align-items: ;
+  color: white;
+  font-size: 20px;
 }
-
+.header-menu a {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  font-size: 20px;
+}
 .list-item {
   padding: 5px;
   margin: 10px;
