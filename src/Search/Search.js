@@ -1,6 +1,5 @@
 import React from "react";
 import Card from "../Card/Card";
-import Collection from "../Collection/Collection";
 import { API_Key } from "../ConstantsJS";
 import "./Search.css";
 class Search extends React.Component {

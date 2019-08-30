@@ -1,5 +1,4 @@
 import React from "react";
-import { API_Key } from "../ConstantsJS";
 
 function Trailer(props) {
   return (

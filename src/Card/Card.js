@@ -1,6 +1,5 @@
 import React from "react";
 import "./Card.css";
-import Movie from "../Movie/Movie";
 import { Link } from "react-router-dom";
 
 function Card({ title, genres, description, src, link }) {

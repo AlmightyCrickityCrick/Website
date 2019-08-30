@@ -4,7 +4,6 @@ import { API_Key } from "../ConstantsJS";
 import "./Movie.css";
 import Cast from "../Cast/Cast";
 import Trailer from "../Trailer/Trailer";
-import { SSL_OP_TLS_ROLLBACK_BUG } from "constants";
 
 class Movie extends React.Component {
   state = {
