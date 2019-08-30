@@ -8,11 +8,12 @@ function Card({ title, genres, description, src, link }) {
     <div className="container">
       <div className="card">
         {src ? (
-          <img className="card-image" src={src} />
+          <img className="card-image" src={src} alt="no image" />
         ) : (
           <img
             className="card-placeholder"
             src="https://www.freelogodesign.org/file/app/client/thumb/1e3b86a8-bdad-45e3-a819-520a89ba5545_200x200.png"
+            alt="no image"
           />
         )}
         <div className="card-content">

@@ -14,12 +14,12 @@ function Home() {
           itemLink="/popular/1"></Collection>
         <Collection
           sortType="release_date.desc"
-          cardCount={9}
+          cardCount={10}
           collectionName="New"
           itemLink="/new/1"></Collection>
         <Collection
           sortType="vote_average.desc"
-          cardCount={5}
+          cardCount={7}
           collectionName="Most Liked"
           itemLink="/best_rated/1"></Collection>
         <Collection
