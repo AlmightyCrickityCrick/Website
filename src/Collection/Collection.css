@@ -6,13 +6,13 @@
   display: flex;
   justify-content: space-between;
 }
-.collection-button {
+.collection-direction .collection-button {
   padding: 3px;
   justify-self: flex-end;
   color: #a1c349;
   font-size: 2em;
   border: 2px ridge #64792fb7;
-  margin: 20px 0px 7px 0px !important;
+  margin: 20px 0px 7px 0px;
   border-radius: 5%;
 }
 .collection-button a {

@@ -19,13 +19,11 @@ function Card({ title, genres, description, src, link }) {
         <div className="card-content">
           <div className="genre-container">
             <ul className="genre-list">
-              <span>
-                {genres.map(genre => (
-                  <li className="genre" key={genre}>
-                    {genre}
-                  </li>
-                ))}
-              </span>
+              {genres.map(genre => (
+                <li className="genre" key={genre}>
+                  {genre}
+                </li>
+              ))}
             </ul>
           </div>
           <h1 className="card-title">{title}</h1>

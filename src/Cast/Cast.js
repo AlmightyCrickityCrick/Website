@@ -8,8 +8,8 @@ function Cast(props) {
         <img className="portrait" src={props.image} alt="no image" />
       </div>
       <div className="actor-info">
-        <div className="character-name">{props.role}</div>
-        <div className="actor-name">{props.name}</div>
+        <p className="character-name">{props.role}</p>
+        <p className="actor-name">{props.name}</p>
       </div>
     </div>
   );

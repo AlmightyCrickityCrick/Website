@@ -7,19 +7,20 @@ import Trailer from "../Trailer/Trailer";
 
 class Movie extends React.Component {
   state = {
-    movie: { title: "", desciption: "", src: "", genres: [] },
+    movie: { title: "", desciption: "", src: "", genres: [], popularity: 2 },
     trailer: {},
     cast: [],
     showComponent: false,
     size: { description: 32, title: 48 },
     className: "",
   };
-  checkClass() {
-    this.state.movie.popularity < 50
-      ? this.setState({ className: "popularity-rating-red" })
-      : this.state.movie.popularity > 70
-      ? this.setState({ className: "popularity-rating-red" })
-      : this.setState({ className: "popularity-rating-orange" });
+  getClass() {
+    console.log("popularity", this.state.movie.popularity);
+    return this.state.movie.popularity < 5
+      ? "popularity-rating-red"
+      : this.state.movie.popularity > 7
+      ? "popularity-rating-green"
+      : "popularity-rating-orange";
   }
   componentDidMount() {
     if (this.props.match.params.id) {
@@ -40,8 +41,7 @@ class Movie extends React.Component {
                 movie.poster_path &&
                 "https://image.tmdb.org/t/p/w500" + movie.poster_path,
               genres: movie.genres,
-              id: movie.id,
-              popularity: parseInt(movie.popularity),
+              popularity: movie.vote_average,
             },
           });
         });
@@ -68,22 +68,21 @@ class Movie extends React.Component {
         API_Key
     )
       .then(cast => cast.json())
-      .then(
-        cast =>
-          this.setState({
-            cast: cast.cast.map(actor => {
-              return {
-                role: actor.character,
-                name: actor.name,
-                photo: actor.profile_path
-                  ? "https://image.tmdb.org/t/p/w500/" + actor.profile_path
-                  : "https://upload.wikimedia.org/wikipedia/commons/f/fc/No_picture_available.png",
-              };
-            }),
+      .then(cast =>
+        this.setState({
+          cast: cast.cast.map(actor => {
+            return {
+              role: actor.character,
+              name: actor.name,
+              photo: actor.profile_path
+                ? "https://image.tmdb.org/t/p/w500/" + actor.profile_path
+                : "https://upload.wikimedia.org/wikipedia/commons/f/fc/No_picture_available.png",
+            };
           }),
-        this.checkClass()
+        })
       );
   }
+
   handleClick() {
     this.setState({ showComponent: !this.state.showComponent });
   }
@@ -107,6 +106,7 @@ class Movie extends React.Component {
   }
 
   render() {
+    const popularityClassName = this.getClass();
     return (
       <div>
         <Trailer id={this.state.trailer.src}> </Trailer>
@@ -114,13 +114,11 @@ class Movie extends React.Component {
           <div className="movie-text">
             <div className="genre-space">
               <ul className="genre-list">
-                <span>
-                  {this.state.movie.genres.map(genre => (
-                    <li className="genre-object" key={genre.id}>
-                      {genre.name}
-                    </li>
-                  ))}
-                </span>
+                {this.state.movie.genres.map(genre => (
+                  <li className="genre-object" key={genre.id}>
+                    {genre.name}
+                  </li>
+                ))}
               </ul>
             </div>
             <h1 className="title" style={{ fontSize: this.state.size.title }}>
@@ -146,7 +144,7 @@ class Movie extends React.Component {
               <div className="popularity-content">
                 <div className="black-line"></div>
                 <div className="black-line"></div>
-                <div className={this.state.className}>
+                <div className={popularityClassName}>
                   {this.state.movie.popularity}
                 </div>
                 <div className="black-line"></div>

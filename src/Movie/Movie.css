@@ -166,9 +166,6 @@
   box-shadow: #a6bb70cb;
 }
 .actor-section {
-  height: auto;
-  height: auto;
-  width: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;

@@ -1,5 +1,4 @@
 .link-container a {
-  /* color: grey; */
   text-decoration: none;
   display: inline;
   justify-content: space-evenly;
@@ -18,7 +17,7 @@
 .previous,
 .next {
   display: inline;
-  color: grey;
+  color: #a1c349;
   text-decoration: none;
 }
 

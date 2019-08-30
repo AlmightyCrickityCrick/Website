@@ -24,7 +24,7 @@ body {
 .app a {
   text-decoration: none;
   font-size: 25px;
-  margin: auto;
+  margin: 0;
 }
 
 .app a:hover {
